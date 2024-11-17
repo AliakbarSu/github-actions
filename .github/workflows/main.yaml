@@ -40,7 +40,7 @@ jobs:
           install: false
           headed: false
           record: true
-          env: testAccountEmail="${{ vars.TEST_ACCOUNT_USERNAME }}",testAccountPassword="${{ secrets.TEST_ACCOUNT_PASSWORD }}"
+          env: testAccountEmail="${{ vars.TEST_ACCOUNT_USERNAME }}",testAccountPassword=${{ secrets.TEST_ACCOUNT_PASSWORD }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_ELECTRON_EXTRA_LAUNCH_ARGS: "--remote-debugging-port=9222"
