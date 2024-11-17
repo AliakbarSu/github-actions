@@ -35,15 +35,15 @@ jobs:
         with:
           working-directory: react-ui
           browser: chrome
-          wait-on: "https://www.google.com"
+          wait-on: "https://survesy-sandbox-604-preview-145578957084.us-central1.run.app"
           wait-on-timeout: 120
           install: false
           headed: false
-          env: testAccountEmail="${{ secrets.TEST_ACCOUNT_USERNAME }}",testAccountPassword="${{ secrets.TEST_ACCOUNT_PASSWORD }}"
+          env: testAccountEmail="${{ vars.TEST_ACCOUNT_USERNAME }}",testAccountPassword="${{ secrets.TEST_ACCOUNT_PASSWORD }}"
         env:
           CYPRESS_ELECTRON_EXTRA_LAUNCH_ARGS: "--remote-debugging-port=9222"
           CYPRESS_TEST_ACCOUNT_EMAIL: "automate_test_user@survesy.com"
-          CYPRESS_BASE_URL: "https://www.google.com"
+          CYPRESS_BASE_URL: "https://survesy-sandbox-604-preview-145578957084.us-central1.run.app"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
