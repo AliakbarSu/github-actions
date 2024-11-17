@@ -50,7 +50,7 @@ jobs:
         if: always()
         with:
           name: cypress-screenshots
-          path: react-ui/cypress/screenshots
+          path: react-ui/cypress
 #      - name: Run Chromatics
 #        uses: chromaui/action@latest
 #        env:
