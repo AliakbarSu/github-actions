@@ -1,0 +1,16 @@
+{
+  "name": "react-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@chromatic-com/cypress": "^0.9.0",
+    "cypress": "^13.15.2",
+    "cypress-visual-regression": "^5.2.2"
+  }
+}
