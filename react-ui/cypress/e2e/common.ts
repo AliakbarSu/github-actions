@@ -12,7 +12,7 @@ export const login = () => {
         cy.get('input#username').type(Cypress.env('testAccountEmail'))
         cy.contains('button[value=default]', 'Continue').click()
         cy.get('input#password').type(Cypress.env('testAccountPassword'), { log: true })
-        cy.get('.password-toggle-label').click()
+
         cy.screenshot()
     });
 };
