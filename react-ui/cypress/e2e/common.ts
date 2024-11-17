@@ -7,11 +7,10 @@ export const login = () => {
         // cy.get('button[type="submit"][name="action"]').click();
         // cy.get('#password').type(Cypress.env('testAccountPassword'), { log: false });
         // cy.get('.password-toggle-label').click();
-        console.log("usernme", Cypress.env('testAccountEmail'))
-        console.log("password", Cypress.env('testAccountPassword'))
+    
         cy.get('input#username').type(Cypress.env('testAccountEmail'))
         cy.contains('button[value=default]', 'Continue').click()
-        cy.get('input#password').type(Cypress.env('testAccountPassword'), { log: true })
+        cy.get('input#password').type(Cypress.env('testAccountPassword'), { log: false })
         cy.contains('button[value=default]', 'Continue').click()
 
         cy.screenshot()
