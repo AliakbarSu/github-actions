@@ -12,8 +12,6 @@ export const login = () => {
         cy.contains('button[value=default]', 'Continue').click()
         cy.get('input#password').type(Cypress.env('testAccountPassword'), { log: false })
         cy.contains('button[value=default]', 'Continue').click()
-
-        cy.screenshot()
     });
 };
 
