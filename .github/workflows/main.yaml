@@ -57,6 +57,7 @@ jobs:
         env:
           CHROMATIC_ARCHIVE_LOCATION: ./cypress/downloads
         with:
+          workingDir: react-ui
           cypress: true
           projectToken: ${{ secrets.CHROMATIC_CYPRESS_PROJECT_TOKEN }}
           buildCommand: npm run build-storybook
