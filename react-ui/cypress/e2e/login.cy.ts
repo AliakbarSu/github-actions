@@ -10,9 +10,9 @@ describe('Login screen', () => {
         cy.visit('/login');
         cy.document().contains('Login');
         cy.loginToAuth0(
-            Cypress.env('testAccountEmail'),
+            Cypress.env('testAccountUsername'),
             Cypress.env('testAccountPassword')
-          )
+        )
         cy.url();
         cy.contains('Choose Organization', { timeout: 10000 }).should('be.visible');
     });

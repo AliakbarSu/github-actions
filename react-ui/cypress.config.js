@@ -19,10 +19,14 @@ module.exports = defineConfig({
         supportFile: false
     },
     e2e: {
-        baseUrl: 'http://localhost:3000/organizations',
+        baseUrl: 'https://survesy-sandbox-604-preview-145578957084.us-central1.run.app',
         setupNodeEvents(on, config) {
             installPlugin(on, config);
         },
-        experimentalStudio: true
+        experimentalStudio: true,
+        env: {
+            testAccountUsername: "automate_test_user@survesy.com",
+            testAccountPassword: `>.WX"rYCmy2KC#sR=zj#SrtETr}wZ5'DB?X+`
+        }
     }
 });

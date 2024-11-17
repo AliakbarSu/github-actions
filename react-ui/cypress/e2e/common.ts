@@ -1,8 +1,9 @@
 export const login = (username: string, password: string) => {
+    cy.visit('/signin')
     const emailInputField = cy.get('#user-email');
-    emailInputField.type(Cypress.env('testAccountEmail'));
+    emailInputField.type(username);
     cy.contains('button', 'Login', { timeout: 2000 }).click();
-    cy.origin('https://dev-8yg0ou7n4m4vg4kd.us.auth0.com', () => {
+    cy.origin('https://dev-8yg0ou7n4m4vg4kd.us.auth0.com', {args: {username, password}}, ({username, password}) => {
         cy.get('input#username').type(username)
         cy.contains('button[value=default]', 'Continue').click()
         cy.get('input#password').type(password, { log: false })
