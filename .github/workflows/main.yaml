@@ -39,7 +39,7 @@ jobs:
           wait-on-timeout: 120
           install: false
           headed: false
-          env: testAccountEmail="${{ vars.TEST_ACCOUNT_USERNAME }}",testAccountPassword="${{ vars.TEST_ACCOUNT_PASSWORD }}"
+          env: testAccountEmail="${{ vars.TEST_ACCOUNT_USERNAME }}",testAccountPassword="${{ secrets.TEST_ACCOUNT_PASSWORD }}"
         env:
           CYPRESS_ELECTRON_EXTRA_LAUNCH_ARGS: "--remote-debugging-port=9222"
           CYPRESS_TEST_ACCOUNT_EMAIL: "automate_test_user@survesy.com"

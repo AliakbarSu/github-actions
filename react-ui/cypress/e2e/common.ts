@@ -6,7 +6,7 @@ export const login = () => {
         cy.get('#username').type(Cypress.env('testAccountEmail'));
         cy.get('button[type="submit"][name="action"]').click();
         cy.get('#password').type(Cypress.env('testAccountPassword'), { log: false });
-        cy.get('.password-toggle-label').click();
+        // cy.get('.password-toggle-label').click();
         cy.screenshot()
         cy.get('button[type="submit"][name="action"]').click();
     });
