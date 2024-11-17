@@ -13,7 +13,7 @@ export const login = (username: string, password: string) => {
 
 export const navigateToProjects = () => {
     cy.loginToAuth0(
-        Cypress.env('testAccountEmail'),
+        Cypress.env('testAccountUsername'),
         Cypress.env('testAccountPassword')
       )
     cy.url();
