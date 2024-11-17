@@ -3,6 +3,7 @@ const { configureVisualRegression } = require('cypress-visual-regression');
 const { installPlugin } = require('@chromatic-com/cypress');
 
 module.exports = defineConfig({
+    projectId: "kkfn1n",
     component: {
         devServer: {
             framework: 'react',
