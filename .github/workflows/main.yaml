@@ -52,12 +52,11 @@ jobs:
         with:
           name: cypress-screenshots
           path: react-ui/cypress
-#      - name: Run Chromatics
-#        uses: chromaui/action@latest
-#        env:
-#          CHROMATIC_ARCHIVE_LOCATION: ./cypress/downloads
-#        with:
-#          cypress: true
-#          projectToken: ${{ secrets.CHROMATIC_CYPRESS_PROJECT_TOKEN }}
-#          workingDir: react-ui
-#          skip: true
+      - name: Run Chromatics
+        uses: chromaui/action@latest
+        env:
+          CHROMATIC_ARCHIVE_LOCATION: ./cypress/downloads
+        with:
+          cypress: true
+          projectToken: ${{ secrets.CHROMATIC_CYPRESS_PROJECT_TOKEN }}
+          workingDir: react-ui
