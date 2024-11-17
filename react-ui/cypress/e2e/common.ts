@@ -1,22 +1,20 @@
-export const login = () => {
+export const login = (username: string, password: string) => {
     const emailInputField = cy.get('#user-email');
     emailInputField.type(Cypress.env('testAccountEmail'));
     cy.contains('button', 'Login', { timeout: 2000 }).click();
     cy.origin('https://dev-8yg0ou7n4m4vg4kd.us.auth0.com', () => {
-        // cy.get('#username').type(Cypress.env('testAccountEmail'));
-        // cy.get('button[type="submit"][name="action"]').click();
-        // cy.get('#password').type(Cypress.env('testAccountPassword'), { log: false });
-        // cy.get('.password-toggle-label').click();
-    
-        cy.get('input#username').type(Cypress.env('testAccountEmail'))
+        cy.get('input#username').type(username)
         cy.contains('button[value=default]', 'Continue').click()
-        cy.get('input#password').type(Cypress.env('testAccountPassword'), { log: false })
+        cy.get('input#password').type(password, { log: false })
         cy.contains('button[value=default]', 'Continue').click()
     });
 };
 
 export const navigateToProjects = () => {
-    login();
+    cy.loginToAuth0(
+        Cypress.env('testAccountEmail'),
+        Cypress.env('testAccountPassword')
+      )
     cy.url();
     cy.contains('Choose Organization', { timeout: 10000 }).should('be.visible');
     cy.contains('button', 'Enter', { timeout: 60000 }).first().click();
