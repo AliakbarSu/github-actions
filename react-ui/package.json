@@ -2,9 +2,14 @@
   "name": "react-ui",
   "version": "1.0.0",
   "main": "index.js",
+  "build": {
+    "yarn": "v14.0.0,v16.0.0",
+    "npm": "v14.0.0,v16.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "build-storybook": "storybook build --stats-json"
   },
   "author": "",
   "license": "ISC",
