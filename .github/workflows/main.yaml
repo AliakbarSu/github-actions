@@ -39,7 +39,7 @@ jobs:
           wait-on-timeout: 120
           install: false
           headed: false
-          record: true
+          record: false
           env: testAccountUsername="${{ vars.TEST_ACCOUNT_USERNAME }}",testAccountPassword=${{ secrets.TEST_ACCOUNT_PASSWORD }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -59,4 +59,5 @@ jobs:
         with:
           cypress: true
           projectToken: ${{ secrets.CHROMATIC_CYPRESS_PROJECT_TOKEN }}
-          workingDir: react-ui
+          buildCommand: npm run build-storybook
+          storybookBuildDir: storybook-static
