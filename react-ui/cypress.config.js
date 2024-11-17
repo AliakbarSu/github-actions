@@ -23,6 +23,7 @@ module.exports = defineConfig({
         setupNodeEvents(on, config) {
             installPlugin(on, config);
         },
-        experimentalStudio: true
+        experimentalStudio: true,
+        supportFile: true
     }
 });
