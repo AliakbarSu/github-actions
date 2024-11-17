@@ -60,5 +60,3 @@ jobs:
           workingDir: react-ui
           cypress: true
           projectToken: ${{ secrets.CHROMATIC_CYPRESS_PROJECT_TOKEN }}
-          buildCommand: npm run build-storybook
-          storybookBuildDir: storybook-static
