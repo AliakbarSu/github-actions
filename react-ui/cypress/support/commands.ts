@@ -1,5 +1,6 @@
 import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command';
 import { mount } from 'cypress/react18';
+import { login } from '../e2e/common';
 
 /// <reference types="cypress" />
 // ***********************************************
@@ -47,9 +48,39 @@ declare global {
     namespace Cypress {
         interface Chainable {
             mount: typeof mount;
+            loginToAuth0(username: string, password: string): Chainable<void>;
         }
     }
 }
 
 Cypress.Commands.add('mount', mount);
 addCompareSnapshotCommand();
+
+
+Cypress.Commands.add('loginToAuth0', (username: string, password: string) => {
+    const log = Cypress.log({
+      displayName: 'AUTH0 LOGIN',
+      message: [`🔐 Authenticating | ${username}`],
+      // @ts-ignore
+      autoEnd: false,
+    })
+    log.snapshot('before')
+  
+    cy.session(
+      `auth0-${username}`,
+      () => {
+        login(username, password)
+      },
+      {
+        validate: () => {
+          // Validate presence of access token in localStorage.
+          cy.wrap(localStorage)
+            .invoke('getItem', 'authAccessToken')
+            .should('exist')
+        },
+      }
+    )
+  
+    log.snapshot('after')
+    log.end()
+  })
