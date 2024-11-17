@@ -44,7 +44,6 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_ELECTRON_EXTRA_LAUNCH_ARGS: "--remote-debugging-port=9222"
-          CYPRESS_TEST_ACCOUNT_EMAIL: "automate_test_user@survesy.com"
           CYPRESS_BASE_URL: "https://survesy-sandbox-604-preview-145578957084.us-central1.run.app"
 
       - name: Upload build artifacts
