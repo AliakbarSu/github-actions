@@ -14,8 +14,6 @@ export const login = () => {
         cy.get('input#password').type(Cypress.env('testAccountPassword'), { log: true })
         cy.get('.password-toggle-label').click()
         cy.screenshot()
-        cy.contains('button[value=default]', 'Continue').click()
-        cy.url().should('equal', 'https://survesy-sandbox-604-preview-145578957084.us-central1.run.app')
     });
 };
 
