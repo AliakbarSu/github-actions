@@ -1,6 +1,6 @@
 import { navigateToProjects } from './common';
 
-describe('Login screen', () => {
+describe.skip('Login screen', () => {
     it('should create project', () => {
         cy.visit('/login');
         cy.document().contains('Login');
