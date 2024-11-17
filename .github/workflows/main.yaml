@@ -1,4 +1,4 @@
-name: "Test Worksflow"
+name: Cypress E2E
 on:
   push:
     branches:
@@ -8,11 +8,55 @@ on:
       - main
 
 jobs:
-  test:
+  run-cypress:
+    name: Cypress Run
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v2
-      - name: Run tests
-        run: |
-          echo "Running tests"
-          exit 0
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.18.x"
+          cache: "npm"
+          cache-dependency-path: react-ui/package-lock.json
+
+      - name: "Install Dependencies"
+        run: npm ci
+        working-directory: react-ui
+
+      - name: Cypress E2E Test
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: react-ui
+          browser: chrome
+          wait-on: "https://www.google.com"
+          wait-on-timeout: 120
+          install: false
+          headed: false
+          env: testAccountEmail="${{ secrets.TEST_ACCOUNT_USERNAME }}",testAccountPassword="${{ secrets.TEST_ACCOUNT_PASSWORD }}"
+        env:
+          CYPRESS_ELECTRON_EXTRA_LAUNCH_ARGS: "--remote-debugging-port=9222"
+          CYPRESS_TEST_ACCOUNT_EMAIL: "automate_test_user@survesy.com"
+          CYPRESS_BASE_URL: "https://www.google.com"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-screenshots
+          path: react-ui/cypress/screenshots
+#      - name: Run Chromatics
+#        uses: chromaui/action@latest
+#        env:
+#          CHROMATIC_ARCHIVE_LOCATION: ./cypress/downloads
+#        with:
+#          cypress: true
+#          projectToken: ${{ secrets.CHROMATIC_CYPRESS_PROJECT_TOKEN }}
+#          workingDir: react-ui
+#          skip: true
